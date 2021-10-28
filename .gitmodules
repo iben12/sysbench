@@ -1,0 +1,6 @@
+[submodule "sysbench"]
+	path = sysbench
+	url = git@github.com:akopytov/sysbench.git
+[submodule "sysbench-tpcc"]
+	path = sysbench-tpcc
+	url = git@github.com:Percona-Lab/sysbench-tpcc.git
