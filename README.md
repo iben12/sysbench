@@ -1,5 +1,11 @@
 # Sysbench MYSQL benchmarking in Docker
 
+## Checkout
+```
+git submodule init
+git submodule update
+```
+
 ## Usage
 This will build the Sysbench image and prepare containers.
 ```
