@@ -1,0 +1,40 @@
+services:
+  db:
+    image: mariadb
+    environment:
+      - MYSQL_ROOT_PASSWORD=secret
+      - MYSQL_DATABASE=sbtest
+      - MYSQL_USER=sysbench
+      - MYSQL_PASSWORD=sysbench
+  sysbench-prepare:
+    build: .
+    command:
+      - sysbench
+      - --time=90
+      - --threads=64
+      - --report-interval=1
+      - --scale=3
+      - --tables=2
+      - --db-driver=mysql
+      - --mysql-host=db
+      - --mysql-port=3306 
+      - --mysql-user=sysbench
+      - --mysql-password=sysbench
+      - ./tpcc.lua
+      - prepare
+  sysbench-run:
+    build: .
+    command:
+      - sysbench
+      - --time=90
+      - --threads=64
+      - --report-interval=1
+      - --scale=3
+      - --tables=2
+      - --db-driver=mysql
+      - --mysql-host=db
+      - --mysql-port=3306 
+      - --mysql-user=sysbench
+      - --mysql-password=sysbench
+      - ./tpcc.lua
+      - run
